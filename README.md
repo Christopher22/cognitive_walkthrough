@@ -17,4 +17,4 @@ Das ist ein Beispiel für eine zu analysierende Aufgabe.
 ```
 followed by the command 
 `pandoc -s --template .\cognitive_walkthrough.latex -o example.latex .\example.md`
-will result in [this example.pdf](example/example.pdf).
+and the compilation of the resulting *example.latex* will result in [this example.pdf](example/example.pdf).
