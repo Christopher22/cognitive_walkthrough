@@ -1,0 +1,64 @@
+%%
+% Creating cognitive walkthroughs with Pandoc and LaTeX.
+%%
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{bera}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage[a4paper,landscape,margin=2cm,top=3cm,headheight=22pt]{geometry}
+\usepackage{hyperref}
+
+\title{$title$}
+\author{$author$}
+\date{\today}
+\makeatletter
+
+% Specify header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{\LARGE{\@title}}}
+\rfoot{\@date, Seite \thepage}
+
+\hypersetup{pdftitle={\@title},
+    colorlinks=false,
+}
+
+\newcolumntype{s}{>{\hsize=.5\hsize}c}
+\newlength\TextFieldLength
+\newcommand\TextFieldFill[2][]{%
+  \setlength\TextFieldLength{\linewidth}%
+  \settowidth{\dimen0}{#2 }%
+  \addtolength\TextFieldLength{-\dimen0}%
+  \TextField[#1,width=\TextFieldLength]{\raisebox{2pt}{#2}}%
+}
+
+\begin{document}
+$if(body)$
+$body$
+\\
+$endif$
+\begin{Form}
+\begin{center}
+\rhead{\large{\TextField[width=15em]{Evaluator:}}}
+\begin{tabularx}{\textwidth}{ XssssX }
+\large{\textbf{Aktion}} & \large{\textbf{Frage 1}} & \large{\textbf{Frage 2}} & \large{\textbf{Frage 3}} & \large{\textbf{Frage 4}} & \large{\textbf{Kommentar}} \\
+$for(actions/pairs)$
+$it.value$ & \CheckBox[name=q$it.key$c1,width=1em]{} & \CheckBox[name=q$it.key$c2,width=1em]{} & \CheckBox[name=q$it.key$c3,width=1em]{} & \CheckBox[name=q$it.key$c4,width=1em]{} & \TextFieldFill[name=comment$it.key$]{} \\
+$endfor$
+\end{tabularx}
+\end{center}
+\end{Form}
+
+\vfill
+
+\begin{tabularx}{\textwidth}{ l l }
+\multicolumn{2}{c}{\large{\textbf{Legende}}} \\
+Frage 1 & Wird der Nutzer versuchen, den richtigen Effekt zu erzielen? \\
+Frage 2 & Wird der Nutzer erkennen, dass die korrekte Aktion zur Verfügung steht? \\
+Frage 3 & Wird der Nutzer eine Verbindung herstellen zwischen der korrekten Aktion und dem gewünschten Effekt? \\
+Frage 4 & Wird der Benutzer den Fortschritt bei korrekter Ausführung erkennen, d. h. Rückmeldung erhalten?
+\end{tabularx}
+
+\end{document}
