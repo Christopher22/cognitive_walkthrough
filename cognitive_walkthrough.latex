@@ -6,7 +6,7 @@
 \usepackage[ngerman]{babel}
 \usepackage{bera}
 \usepackage{fancyhdr}
-\usepackage{tabularx}
+\usepackage{ltablex}
 \usepackage[a4paper,landscape,margin=2cm,top=3cm,headheight=22pt]{geometry}
 \usepackage{hyperref}
 
