@@ -62,4 +62,16 @@ Frage 3 & Wird der Nutzer eine Verbindung herstellen zwischen der korrekten Akti
 Frage 4 & Wird der Benutzer den Fortschritt bei korrekter Ausführung erkennen, d. h. Rückmeldung erhalten?
 \end{tabularx}
 
+% Present solutions on separate page, if provided
+$if(solutions)$
+\newpage
+\section*{Möglicher Lösungsweg}
+\begin{tabularx}{\textwidth}{ lX }
+\large{\textbf{Aktion}} & \large{\textbf{Lösungsvorschlag}} \\
+$for(solutions/pairs)$
+$it.key$ & $it.value$ \\
+$endfor$
+\end{tabularx}
+$endif$
+
 \end{document}
