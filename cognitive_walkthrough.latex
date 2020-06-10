@@ -51,7 +51,8 @@ $endfor$
 \end{center}
 \end{Form}
 
-\vfill
+\null
+\vspace*{\fill}
 
 \begin{tabularx}{\textwidth}{ l l }
 \multicolumn{2}{c}{\large{\textbf{Legende}}} \\
